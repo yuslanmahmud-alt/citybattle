@@ -1,0 +1,36 @@
+name: CityBattle
+version: 1.0.0
+main: com.citybattle.CityBattlePlugin
+api-version: 1.20
+description: City Battle Royale plugin for 10 players
+author: CityBattle
+
+commands:
+  startgame:
+    description: Start the game - teleport players to spawn with glass cages and countdown
+    usage: /startgame
+    permission: citybattle.host
+  setcenter:
+    description: Set border center at your location
+    usage: /setcenter
+    permission: citybattle.host
+  shrink:
+    description: Shrink border to target size over time
+    usage: /shrink <size> <seconds>
+    permission: citybattle.host
+  supplydrop:
+    description: Drop a supply chest at random location inside border
+    usage: /supplydrop
+    permission: citybattle.host
+  alive:
+    description: Show how many players are still alive
+    usage: /alive
+  resetgame:
+    description: Reset everything for a new round
+    usage: /resetgame
+    permission: citybattle.host
+
+permissions:
+  citybattle.host:
+    description: Host commands
+    default: op
