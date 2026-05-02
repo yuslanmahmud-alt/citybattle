@@ -144,7 +144,7 @@ public class CityBattlePlugin extends JavaPlugin implements Listener {
             player.getInventory().clear();
             player.setHealth(20);
             player.setFoodLevel(20);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 999999, 255, false, false));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.getByName("DAMAGE_RESISTANCE"), 999999, 255, false, false));
 
             buildGlassCage(spawnLoc, i);
             player.setScoreboard(scoreboard);
@@ -155,7 +155,7 @@ public class CityBattlePlugin extends JavaPlugin implements Listener {
         // Broadcast to all
         Bukkit.broadcastMessage(ChatColor.GOLD + "" + ChatColor.BOLD + 
             "=== CITY BATTLE ROYALE BERMULA! ===");
-        Bukkit.broadcastMessage(ChatColor.YELLOW + players.size() + " player telah memasuki arena!");
+        Bukkit.broadcastMessage(ChatColor.YELLOW + "" + players.size() + " player telah memasuki arena!");
 
         // Countdown 5,4,3,2,1 then remove glass
         startCountdown(players);
@@ -223,7 +223,7 @@ public class CityBattlePlugin extends JavaPlugin implements Listener {
                             p.sendTitle(ChatColor.GREEN + "" + ChatColor.BOLD + "MULA!", 
                                 ChatColor.YELLOW + "Good luck!", 5, 25, 10);
                             p.playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1f, 1f);
-                            p.removePotionEffect(PotionEffectType.RESISTANCE);
+                            p.removePotionEffect(PotionEffectType.getByName("DAMAGE_RESISTANCE"));
                         }
                     }
                     Bukkit.broadcastMessage(ChatColor.GREEN + "" + ChatColor.BOLD + 
@@ -340,7 +340,7 @@ public class CityBattlePlugin extends JavaPlugin implements Listener {
             p.getInventory().clear();
             p.setHealth(20);
             p.setFoodLevel(20);
-            p.removePotionEffect(PotionEffectType.RESISTANCE);
+            p.removePotionEffect(PotionEffectType.getByName("DAMAGE_RESISTANCE"));
             p.sendMessage(ChatColor.YELLOW + "Game telah di-reset!");
         }
 
@@ -413,7 +413,7 @@ public class CityBattlePlugin extends JavaPlugin implements Listener {
                         Firework fw = winner.getWorld().spawn(winner.getLocation(), Firework.class);
                         FireworkMeta meta = fw.getFireworkMeta();
                         meta.addEffect(FireworkEffect.builder()
-                            .withColor(Color.YELLOW, Color.GOLD, Color.WHITE)
+                            .withColor(Color.YELLOW, Color.ORANGE, Color.WHITE)
                             .with(FireworkEffect.Type.STAR)
                             .withFlicker().withTrail().build());
                         meta.setPower(1);
